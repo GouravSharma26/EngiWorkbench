@@ -104,3 +104,4 @@ void MainWindow::onAboutTriggered() {
 
 } // namespace app
 } // namespace workbench
+

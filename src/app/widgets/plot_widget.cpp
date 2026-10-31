@@ -237,3 +237,4 @@ void PlotWidget::paintEvent(QPaintEvent* /*event*/) {
 
 } // namespace app
 } // namespace workbench
+

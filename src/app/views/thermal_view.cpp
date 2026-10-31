@@ -315,3 +315,4 @@ void ThermalView::onExportConvergenceCsvClicked() {
 
 } // namespace app
 } // namespace workbench
+

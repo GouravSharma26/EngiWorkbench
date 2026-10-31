@@ -350,3 +350,4 @@ void PerformanceView::onExportAgreementClicked() {
 
 } // namespace app
 } // namespace workbench
+

@@ -187,3 +187,4 @@ void GeometryView::onWireframeToggled(bool checked) {
 
 } // namespace app
 } // namespace workbench
+

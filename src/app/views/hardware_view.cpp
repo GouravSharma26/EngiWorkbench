@@ -253,3 +253,4 @@ void HardwareView::onDiscoverAllClicked() {
 
 } // namespace app
 } // namespace workbench
+
