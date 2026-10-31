@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Package Standalone Release",
+      "type": "shell",
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/package_release.ps1",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      }
+    }
+  ]
+}

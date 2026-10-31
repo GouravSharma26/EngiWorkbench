@@ -23,3 +23,8 @@ add_subdirectory(tests)
 # 3. Presentation / application layer
 add_subdirectory(src/app)
 
+# 4. Windows standalone launcher
+if(WIN32)
+    add_subdirectory(src/launcher)
+endif()
+

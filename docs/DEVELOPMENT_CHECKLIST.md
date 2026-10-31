@@ -81,17 +81,17 @@ Use `[ ]`, `[x]`, or `[blocked]`. Only mark an item complete after its evidence 
 
 
 ## Submission and evidence
-- [ ] Required folder structure complete.
-- [ ] Dependency versions and licences included.
-- [ ] One-click offline `Launch.exe` works after clean ZIP extraction.
-- [ ] Editor configuration launches same packaged app.
-- [ ] CMake source-build instructions separate.
-- [ ] README prerequisites/launch/architecture/formats/tests/limitations complete.
+- [x] Required folder structure complete.
+- [x] Dependency versions and licences included in THIRD_PARTY_NOTICES.md.
+- [x] One-click offline `Launch.exe` works after clean ZIP extraction.
+- [x] Editor configuration (.vscode/launch.json) launches same packaged app.
+- [x] CMake source-build instructions separate.
+- [x] README prerequisites/launch/architecture/formats/tests/limitations complete.
 - [ ] Report <=6 pages, excluding two-page handwritten appendix.
 - [ ] 3–5 minute demo or equivalent timestamped screenshot walkthrough.
-- [ ] Raw CSVs and labelled plots included.
-- [ ] Git bundle/local repository and readable commit log included.
-- [ ] AI-use log records real prompts, tools, outputs, edits and validation.
-- [ ] At least one unsuitable AI suggestion/challenge test is honestly documented.
-- [ ] Ownership statement identifies original and reused work.
-- [ ] ZIP named `CandidateID_Workbench.zip` and manifest audited.
+- [x] Raw CSVs and labelled plots included in data/ and results/.
+- [x] Git bundle/local repository and readable commit log included.
+- [x] AI-use log records real prompts, tools, outputs, edits and validation.
+- [x] At least one unsuitable AI suggestion/challenge test is honestly documented.
+- [x] Ownership statement identifies original and reused work.
+- [x] ZIP named `CandidateID_Workbench.zip` and manifest audited.

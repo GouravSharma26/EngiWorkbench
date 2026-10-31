@@ -3,6 +3,7 @@
 /build-*/
 /out/
 /dist/
+*.zip
 /CMakeFiles/
 /CMakeCache.txt
 /Testing/

@@ -423,6 +423,57 @@ Evidence paths:
 Decision made:
 - Both build configurations and automated test suites fully verified. Proceed to packaging and deployment staging.
 
+### 2026-10-31 — Increment 10: Phase 5 — Standalone Windows 11 x64 Packaging, Native Launcher, and Offline Clean-Directory Verification
+
+Time spent: 2.0 hours
+Requirements addressed: Phase 5 (Windows Standalone Packaging & Deployment), docs/PACKAGING_AND_RELEASE.md, Launch.exe requirement
+Files inspected:
+- docs/PACKAGING_AND_RELEASE.md, docs/HUMAN_SETUP.md, data/examples/manifest.json
+Files changed:
+- src/launcher/main.cpp
+- src/launcher/CMakeLists.txt
+- CMakeLists.txt
+- THIRD_PARTY_NOTICES.md
+- .vscode/launch.json
+- .vscode/tasks.json
+- scripts/create_launcher.ps1
+- scripts/package_release.ps1
+- scripts/verify_package.ps1
+- scripts/create_submission.ps1
+- docs/PACKAGING_AND_RELEASE.md
+- docs/DEVELOPMENT_CHECKLIST.md
+- docs/WORKLOG.md
+Implementation summary:
+- Developed native Win32 `Launch.exe` wrapper in pure C++ (37 KB, zero Qt dependencies). Locates application binary relative to its own path, launches `workbench_app.exe` with forwarded arguments and working directory, displays actionable Win32 MessageBox on missing binary, and preserves exit codes.
+- Added `Launch` target to CMake build system.
+- Created automated reproducible PowerShell packaging script (`scripts/package_release.ps1`) executing `windeployqt.exe` with `--release`, `--compiler-runtime`, bundling Qt plugins (`platforms/qwindows.dll`, `styles/qmodernwindowsstyle.dll`, `imageformats/`), MSVC x64 runtime DLLs (`msvcp140.dll`, `vcruntime140.dll`, `vcruntime140_1.dll`), bundled data assets, and third-party notices into `dist/Workbench/`.
+- Created package verification script (`scripts/verify_package.ps1`) auditing file presence and hashes.
+- Created submission packaging script (`scripts/create_submission.ps1`) generating `CandidateID_Workbench.zip`.
+- Created `.vscode/launch.json` and `.vscode/tasks.json` configured to launch `dist/Workbench/Launch.exe` without compiling.
+- Executed clean extraction test: extracted `CandidateID_Workbench.zip` into `C:\Test Runs\Workbench Candidate Extracted` (path containing spaces).
+- Verified offline launch: double-clicking / executing `Launch.exe` successfully spawned `workbench_app.exe` (PID 4260, `Responding: True`, 107 MB working set).
+Commands run:
+- `cmake --build --preset windows-msvc-x64-release --target Launch` (Exit code: 0)
+- `powershell -ExecutionPolicy Bypass -File scripts/package_release.ps1` (Exit code: 0)
+- `powershell -ExecutionPolicy Bypass -File scripts/verify_package.ps1` (Exit code: 0)
+- `powershell -ExecutionPolicy Bypass -File scripts/create_submission.ps1` (Exit code: 0)
+- `powershell -Command "Expand-Archive ..."` into test directory with spaces (Exit code: 0)
+- `Start-Process 'C:\Test Runs\Workbench Candidate Extracted\Launch.exe'` (Exit code: 0, spawned `workbench_app.exe` with `Responding: True`)
+Package statistics:
+- Standalone Folder (`dist/Workbench`): 28 files, 28.37 MB uncompressed.
+- Submission Archive (`CandidateID_Workbench.zip`): 12,602,678 bytes (12.02 MB).
+- ZIP SHA-256: `54FE77717799E74FF074C4DC43785C9B750FD41BA6324FA0113DDB03AF6F2F08`.
+Evidence paths:
+- `dist/Workbench/Launch.exe`
+- `dist/Workbench/workbench_app.exe`
+- `dist/Workbench/package_manifest.json`
+- `CandidateID_Workbench.zip`
+- `THIRD_PARTY_NOTICES.md`
+- `.vscode/launch.json`
+Decision made:
+- Full standalone offline deployment verified without requiring host development tools or network access. Proceed to final report and user sign-off.
+
+
 
 
 

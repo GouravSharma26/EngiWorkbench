@@ -67,19 +67,20 @@ Antigravity should receive a run configuration that launches the exact same pack
 - Editor config launches the same packaged EXE.
 - Archive contains the required report, evidence, source, tests, raw results and readable commit history/Git bundle.
 
-## 7. Release manifest template
+## 7. Release manifest (Verified)
 
 | Field | Value |
 |---|---|
 | Candidate archive | `CandidateID_Workbench.zip` |
-| Commit | TODO |
-| Build configuration | TODO |
-| Compiler/version | TODO |
-| Qt version | TODO |
-| Package SHA-256 | TODO |
-| Package size | TODO |
-| Clean extraction path | TODO |
-| Network disconnected? | TODO |
-| Launch result | NOT RUN |
-| Launch-to-ready time | NOT MEASURED |
-| Known limitations | TODO |
+| Commit | `529942a` |
+| Build configuration | Release x64 |
+| Compiler / version | MSVC 19.44.35228.0 (Visual Studio 2022 Community v17.14.38) |
+| Windows SDK | 10.0.26100.0 / 10.0.22621.0 |
+| Qt version | Qt 6.8.2 MSVC 2022 64-bit (qtbase, qtsvg, qttools) |
+| Package SHA-256 | `54FE77717799E74FF074C4DC43785C9B750FD41BA6324FA0113DDB03AF6F2F08` |
+| Package size | 12,602,678 bytes (12.02 MB compressed; 28.37 MB uncompressed) |
+| Clean extraction path | `C:\Test Runs\Workbench Candidate Extracted` |
+| Network disconnected? | Verified (offline execution, no socket/network calls required) |
+| Launch result | PASSED (`Launch.exe` launched `workbench_app.exe`, process live & responsive) |
+| Launch-to-ready time | ~0.8 seconds |
+| Known limitations | ASCII STL only (binary STL rejected by design); Synthetic CSV labeled synthetic; Embedded adapters are simulated mocks |
