@@ -77,3 +77,19 @@ add_test(
     NAME workbench_embedded_tests
     COMMAND workbench_embedded_tests
 )
+
+add_executable(workbench_backprop_tests
+    test_backprop.cpp
+)
+
+target_link_libraries(workbench_backprop_tests
+    PRIVATE
+        workbench_core
+)
+
+target_compile_features(workbench_backprop_tests PRIVATE cxx_std_17)
+
+add_test(
+    NAME workbench_backprop_tests
+    COMMAND workbench_backprop_tests
+)

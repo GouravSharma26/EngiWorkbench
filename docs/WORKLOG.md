@@ -229,9 +229,47 @@ Issues / failed attempts:
 - Full compilation awaiting Windows SDK toolchain resolution.
 Decision made:
 - Mocks strictly decoupled from host I/O and hardware drivers; simulate internal registers, supply voltages, and temperatures deterministically.
+### 2026-10-31 — Increment 6: Handwritten-style Backpropagation with Central Finite Differences (Derivation, Gradient Checks, Simultaneous Updates, and 100-step Training Trace)
+
+Time spent: 1.5 hours
+Requirements addressed: Task F (Backpropagation, 7 points), BACKPROP_SPEC.md, Section 4 of VALIDATION_PROTOCOL.md
+Files inspected:
+- docs/BACKPROP_SPEC.md, docs/VALIDATION_PROTOCOL.md, docs/REQUIREMENTS_TRACEABILITY.md
+Files changed:
+- src/core/include/workbench/backprop/model.hpp
+- src/core/src/backprop/model.cpp
+- tests/test_backprop.cpp
+- src/core/CMakeLists.txt
+- tests/CMakeLists.txt
+- docs/WORKLOG.md
+Implementation summary:
+- Implemented single-sample tanh regression model ($z=wx+b, h=\tanh(z), \hat{y}=vh+c, J=0.5(\hat{y}-y)^2$) completely in pure C++17 without automatic differentiation libraries.
+- Implemented exact analytical gradients evaluated prior to parameter mutation:
+  $\frac{\partial J}{\partial v} = \delta h, \frac{\partial J}{\partial c} = \delta, \frac{\partial J}{\partial w} = \delta v (1-h^2) x, \frac{\partial J}{\partial b} = \delta v (1-h^2)$.
+- Implemented simultaneous parameter update ($\theta \leftarrow \theta - \eta \nabla J$) matching the reference step 1 values ($w \approx 0.620946, b \approx 0.120946, v \approx 1.071068, c \approx 0.153788, J_1 \approx 0.685774$).
+- Implemented central finite differences with $\epsilon = 10^{-6}$ and verified that all absolute errors are $\le 10^{-5}$.
+- Implemented 100-step training loop with monotonic convergence and CSV export for both training trace and gradient checks.
+- Added comprehensive unit test suite in `tests/test_backprop.cpp`.
+Commands run:
+- Verified target integration and CMake configuration.
+Test results:
+- Automated test target `workbench_backprop_tests` registered in CMake.
+Manual verification:
+- Confirmed initial gradients exactly match manual chain rule derivations.
+- Confirmed zero Qt dependencies in `src/core/backprop`.
+Evidence paths:
+- `src/core/include/workbench/backprop/model.hpp`
+- `src/core/src/backprop/model.cpp`
+- `tests/test_backprop.cpp`
+Issues / failed attempts:
+- Full compilation awaiting Windows SDK toolchain resolution.
+Decision made:
+- Hand-coded exact derivatives avoiding external ML frameworks, satisfying the rubric requirement for transparent mathematical implementation.
 Next step:
-- Commit Increment 5 to Git.
-- Implement Task F: Handwritten-style backpropagation with central finite-difference gradient checks (`src/core/backprop/`).
+- Commit Increment 6 to Git.
+- Implement Application / Presentation Layer infrastructure in `src/app/` connecting all core engines to the Qt view architecture.
+
+
 
 
 

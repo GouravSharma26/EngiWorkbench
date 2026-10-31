@@ -6,6 +6,7 @@ add_library(workbench_core STATIC
     src/performance/thread_pool.cpp
     src/performance/benchmark.cpp
     src/embedded/adapter.cpp
+    src/backprop/model.cpp
 )
 
 target_include_directories(workbench_core
