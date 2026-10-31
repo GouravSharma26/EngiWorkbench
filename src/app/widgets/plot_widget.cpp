@@ -1,4 +1,4 @@
-#include "workbench/widgets/plot_widget.hpp"
+#include "widgets/plot_widget.hpp"
 #include <QPainter>
 #include <QFontMetrics>
 #include <cmath>

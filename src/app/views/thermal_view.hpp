@@ -7,7 +7,7 @@
 #include <QLabel>
 #include <QTableWidget>
 #include "workbench/domain/thermal.hpp"
-#include "workbench/widgets/plot_widget.hpp"
+#include "widgets/plot_widget.hpp"
 
 namespace workbench {
 namespace app {

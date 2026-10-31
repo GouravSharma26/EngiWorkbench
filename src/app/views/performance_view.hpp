@@ -11,7 +11,7 @@
 #include <atomic>
 #include <thread>
 #include "workbench/performance/benchmark.hpp"
-#include "workbench/widgets/plot_widget.hpp"
+#include "widgets/plot_widget.hpp"
 
 namespace workbench {
 namespace app {
@@ -74,4 +74,6 @@ private:
 
 } // namespace app
 } // namespace workbench
+
+Q_DECLARE_METATYPE(workbench::performance::BenchmarkSuiteResult)
 

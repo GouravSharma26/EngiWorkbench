@@ -3,11 +3,11 @@
 #include <QMainWindow>
 #include <QTabWidget>
 #include <QLabel>
-#include "workbench/views/geometry_view.hpp"
-#include "workbench/views/thermal_view.hpp"
-#include "workbench/views/performance_view.hpp"
-#include "workbench/views/hardware_view.hpp"
-#include "workbench/views/backprop_view.hpp"
+#include "views/geometry_view.hpp"
+#include "views/thermal_view.hpp"
+#include "views/performance_view.hpp"
+#include "views/hardware_view.hpp"
+#include "views/backprop_view.hpp"
 
 namespace workbench {
 namespace app {

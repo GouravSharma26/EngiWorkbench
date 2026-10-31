@@ -5,7 +5,7 @@
 #include <QPushButton>
 #include <QCheckBox>
 #include <QTableWidget>
-#include "workbench/widgets/viewport_3d.hpp"
+#include "widgets/viewport_3d.hpp"
 
 namespace workbench {
 namespace app {

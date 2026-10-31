@@ -1,4 +1,4 @@
-#include "workbench/views/hardware_view.hpp"
+#include "views/hardware_view.hpp"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGroupBox>

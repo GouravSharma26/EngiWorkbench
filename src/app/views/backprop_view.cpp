@@ -1,4 +1,4 @@
-#include "workbench/views/backprop_view.hpp"
+#include "views/backprop_view.hpp"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGroupBox>

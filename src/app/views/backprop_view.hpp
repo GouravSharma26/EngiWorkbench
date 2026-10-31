@@ -5,7 +5,7 @@
 #include <QPushButton>
 #include <QTableWidget>
 #include "workbench/backprop/model.hpp"
-#include "workbench/widgets/plot_widget.hpp"
+#include "widgets/plot_widget.hpp"
 
 namespace workbench {
 namespace app {

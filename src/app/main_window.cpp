@@ -1,4 +1,4 @@
-#include "workbench/main_window.hpp"
+#include "main_window.hpp"
 #include "workbench/core.hpp"
 #include <QMenuBar>
 #include <QStatusBar>

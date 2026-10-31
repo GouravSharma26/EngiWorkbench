@@ -1,4 +1,4 @@
-#include "workbench/views/performance_view.hpp"
+#include "views/performance_view.hpp"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QFormLayout>

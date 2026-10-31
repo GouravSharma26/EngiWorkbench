@@ -1,4 +1,4 @@
-#include "workbench/widgets/viewport_3d.hpp"
+#include "widgets/viewport_3d.hpp"
 #include <QPainter>
 #include <QPainterPath>
 #include <cmath>

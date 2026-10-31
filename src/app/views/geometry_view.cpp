@@ -1,4 +1,4 @@
-#include "workbench/views/geometry_view.hpp"
+#include "views/geometry_view.hpp"
 #include "workbench/io/stl_parser.hpp"
 #include "workbench/io/csv_parser.hpp"
 #include <QVBoxLayout>

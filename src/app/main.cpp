@@ -3,7 +3,7 @@
 
 #if defined(WORKBENCH_HAS_QT)
 #include <QApplication>
-#include "workbench/main_window.hpp"
+#include "main_window.hpp"
 
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);

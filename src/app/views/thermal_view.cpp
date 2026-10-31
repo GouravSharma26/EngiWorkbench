@@ -1,4 +1,4 @@
-#include "workbench/views/thermal_view.hpp"
+#include "views/thermal_view.hpp"
 #include "workbench/thermal/solver.hpp"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
