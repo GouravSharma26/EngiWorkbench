@@ -3,21 +3,16 @@
 
 #if defined(WORKBENCH_HAS_QT)
 #include <QApplication>
-#include <QMainWindow>
-#include <QLabel>
+#include "workbench/main_window.hpp"
 
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
-    QMainWindow window;
-    window.setWindowTitle("PASS Science Works - Unified Engineering Workbench");
-    window.resize(1024, 768);
-    
-    auto* label = new QLabel("PASS Science Works - Unified Engineering Workbench (" + 
-                             QString::fromStdString(workbench::core::get_version_string()) + ")", &window);
-    label->setAlignment(Qt::AlignCenter);
-    window.setCentralWidget(label);
-    
+    app.setApplicationName("EngiWorkbench");
+    app.setApplicationDisplayName("PASS Science Works - Unified Engineering Workbench");
+
+    workbench::app::MainWindow window;
     window.show();
+
     return app.exec();
 }
 #else
@@ -31,4 +26,3 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 #endif
-
