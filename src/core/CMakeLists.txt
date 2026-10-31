@@ -1,6 +1,8 @@
 add_library(workbench_core STATIC
     src/core.cpp
     src/thermal/solver.cpp
+    src/io/stl_parser.cpp
+    src/io/csv_parser.cpp
 )
 
 target_include_directories(workbench_core

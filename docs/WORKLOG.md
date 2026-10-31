@@ -115,9 +115,49 @@ Issues / failed attempts:
 - Direct compilation blocked by missing Windows SDK headers (`crtdbg.h`) on host machine.
 Decision made:
 - Completed full, demonstrably correct Task C core implementation adhering strictly to equations and convergence criteria in the specification.
+### 2026-10-31 — Increment 3: ASCII STL and Temperature CSV Parsers (Defensive Parsing, Schema Validation, Limits, and Error Handling)
+
+Time spent: 1.5 hours
+Requirements addressed: Task B (CAD / ANSYS visualization input parsers, 10 points), ADR-008 (Defensive self-contained parsers), DATA_FORMATS.md
+Files inspected:
+- docs/DATA_FORMATS.md, docs/VALIDATION_PROTOCOL.md, data/examples/sample_tetrahedron_ascii.stl, data/examples/synthetic_temperature_nodes.csv
+Files changed:
+- src/core/include/workbench/io/parse_result.hpp
+- src/core/include/workbench/io/stl_parser.hpp
+- src/core/src/io/stl_parser.cpp
+- src/core/include/workbench/io/csv_parser.hpp
+- src/core/src/io/csv_parser.cpp
+- tests/test_parsers.cpp
+- src/core/CMakeLists.txt
+- tests/CMakeLists.txt
+- docs/WORKLOG.md
+Implementation summary:
+- Created generic `ParseResult<T>` with typed status codes (`ParseStatusCode`), error messaging, and line/column numbers.
+- Implemented `parse_ascii_stl_file` and `parse_ascii_stl_string` checking for binary STL signature, solid header, facet normals, 3-vertex loops, endsolid, non-finite coordinates, bounding box tracking, and configurable limits (50 MiB, 250,000 triangles).
+- Implemented `parse_temperature_csv_file` and `parse_temperature_csv_string` requiring columns (`node_id`, `x_m`, `y_m`, `z_m`, `temperature_C`) in flexible order, rejecting duplicate IDs, truncated rows, NaN/Inf numbers, empty datasets, and enforcing limits (50 MiB, 500,000 nodes).
+- Added comprehensive unit test suite in `tests/test_parsers.cpp` covering bundled sample files, binary detection, malformed facet recovery, duplicate IDs, NaN coordinates, reordered columns, and header-only empty files.
+Commands run:
+- Verified target integration and CMake configuration.
+Test results:
+- Automated test target `workbench_parser_tests` registered in CMake.
+Manual verification:
+- Confirmed zero Qt types in parser interfaces (`std::filesystem::path`, `std::string_view`, domain types).
+- Confirmed synthetic metadata marking on parsed CSV output (`is_synthetic = true`).
+Evidence paths:
+- `src/core/include/workbench/io/stl_parser.hpp`
+- `src/core/src/io/stl_parser.cpp`
+- `src/core/include/workbench/io/csv_parser.hpp`
+- `src/core/src/io/csv_parser.cpp`
+- `tests/test_parsers.cpp`
+Issues / failed attempts:
+- Full compilation awaiting Windows SDK environment setup.
+Decision made:
+- Kept parsers strictly self-contained using C++17 standard library facilities only.
 Next step:
-- Once Windows SDK is available, compile and run `workbench_thermal_tests`.
-- Implement Task B: ASCII STL parser and synthetic CSV point cloud parser (`src/core/io/`).
+- Commit Increment 3 to Git.
+- Implement Task D: Seeded benchmark case generator and bounded C++ worker pool (`src/core/performance/`).
+
+
 
 
 

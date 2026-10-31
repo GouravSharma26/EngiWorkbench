@@ -29,3 +29,19 @@ add_test(
     NAME workbench_thermal_tests
     COMMAND workbench_thermal_tests
 )
+
+add_executable(workbench_parser_tests
+    test_parsers.cpp
+)
+
+target_link_libraries(workbench_parser_tests
+    PRIVATE
+        workbench_core
+)
+
+target_compile_features(workbench_parser_tests PRIVATE cxx_std_17)
+
+add_test(
+    NAME workbench_parser_tests
+    COMMAND workbench_parser_tests
+)
