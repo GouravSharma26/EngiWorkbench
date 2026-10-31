@@ -45,3 +45,19 @@ add_test(
     NAME workbench_parser_tests
     COMMAND workbench_parser_tests
 )
+
+add_executable(workbench_performance_tests
+    test_performance.cpp
+)
+
+target_link_libraries(workbench_performance_tests
+    PRIVATE
+        workbench_core
+)
+
+target_compile_features(workbench_performance_tests PRIVATE cxx_std_17)
+
+add_test(
+    NAME workbench_performance_tests
+    COMMAND workbench_performance_tests
+)

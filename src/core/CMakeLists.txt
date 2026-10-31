@@ -3,6 +3,8 @@ add_library(workbench_core STATIC
     src/thermal/solver.cpp
     src/io/stl_parser.cpp
     src/io/csv_parser.cpp
+    src/performance/thread_pool.cpp
+    src/performance/benchmark.cpp
 )
 
 target_include_directories(workbench_core

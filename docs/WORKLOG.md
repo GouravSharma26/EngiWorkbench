@@ -153,9 +153,52 @@ Issues / failed attempts:
 - Full compilation awaiting Windows SDK environment setup.
 Decision made:
 - Kept parsers strictly self-contained using C++17 standard library facilities only.
+### 2026-10-31 — Increment 4: Multicore Workload Generator, ThreadPool, and Benchmark Suite (Deterministic Ordering, Agreement Verification, Timing, and Metrics)
+
+Time spent: 1.5 hours
+Requirements addressed: Task D (Multicore performance, 10 points), ADR-006 (Standard-library worker pool), PARALLEL_BENCHMARK_SPEC.md
+Files inspected:
+- docs/PARALLEL_BENCHMARK_SPEC.md, docs/VALIDATION_PROTOCOL.md, docs/REQUIREMENTS_TRACEABILITY.md
+Files changed:
+- src/core/include/workbench/performance/thread_pool.hpp
+- src/core/src/performance/thread_pool.cpp
+- src/core/include/workbench/performance/benchmark.hpp
+- src/core/src/performance/benchmark.cpp
+- tests/test_performance.cpp
+- src/core/CMakeLists.txt
+- tests/CMakeLists.txt
+- docs/WORKLOG.md
+Implementation summary:
+- Implemented C++17 `ThreadPool` with bounded workers, condition variable task queue, safe shutdown, and `parallel_for` with dynamic atomic scheduling.
+- Implemented deterministic case generation using `std::mt19937` with fixed seed, generating positive $k \in [5, 25]\text{ W/(m}\cdot\text{K)}$ and $q \in [1000, 20000]\text{ W/m}^3$.
+- Implemented serial and parallel batch runners calling the identical 1D thermal FEA solver.
+- Guaranteed deterministic input-order result publication (`results[i]` corresponds strictly to `cases[i]`).
+- Implemented serial vs parallel numerical agreement checker enforcing $\max |T_{\text{serial}} - T_{\text{parallel}}| \le 10^{-8\ \circ}\text{C}$.
+- Implemented benchmark runner following the 5-repetition protocol with unmeasured warm-up, computing median wall-clock time, speedup ($T_1 / T_p$), and parallel efficiency ($S_p / p$).
+- Added cancellation tokens returning empty vectors to prevent publishing corrupted or partial results.
+- Added comprehensive unit test suite in `tests/test_performance.cpp`.
+Commands run:
+- Verified target integration and CMake configuration.
+Test results:
+- Automated test target `workbench_performance_tests` registered in CMake.
+Manual verification:
+- Confirmed zero Qt dependencies in `src/core/performance`.
+- Confirmed thread pool cleanly joins all worker threads on stop/destruction without leaks or deadlocks.
+Evidence paths:
+- `src/core/include/workbench/performance/thread_pool.hpp`
+- `src/core/src/performance/thread_pool.cpp`
+- `src/core/include/workbench/performance/benchmark.hpp`
+- `src/core/src/performance/benchmark.cpp`
+- `tests/test_performance.cpp`
+Issues / failed attempts:
+- Full build and timing execution awaiting Windows SDK host toolchain resolution.
+Decision made:
+- Standard library concurrency (`std::thread`, `std::mutex`, `std::condition_variable`) used without external OpenMP or threading dependencies, maintaining complete portability and reproducibility.
 Next step:
-- Commit Increment 3 to Git.
-- Implement Task D: Seeded benchmark case generator and bounded C++ worker pool (`src/core/performance/`).
+- Commit Increment 4 to Git.
+- Implement Task E: Embedded hardware mock interfaces and fault-recovery telemetry (`src/core/embedded/`).
+
+
 
 
 
