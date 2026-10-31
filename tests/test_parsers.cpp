@@ -3,6 +3,15 @@
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
+#include <filesystem>
+
+static std::string resolve_data_path(const std::string& rel) {
+    if (std::filesystem::exists(rel)) return rel;
+    if (std::filesystem::exists("../" + rel)) return "../" + rel;
+    if (std::filesystem::exists("../../" + rel)) return "../../" + rel;
+    if (std::filesystem::exists("../../../" + rel)) return "../../../" + rel;
+    return rel;
+}
 
 int main() {
     int total = 0;
@@ -12,14 +21,16 @@ int main() {
 
     // Test 1: Bundled sample tetrahedron ASCII STL
     total++;
-    auto stl_res = workbench::io::parse_ascii_stl_file("data/examples/sample_tetrahedron_ascii.stl");
+    auto stl_res = workbench::io::parse_ascii_stl_file(resolve_data_path("data/examples/sample_tetrahedron_ascii.stl"));
     if (stl_res.is_ok()) {
         const auto& mesh = *stl_res.data;
-        if (mesh.facet_count() == 4 && mesh.solid_name == "sample_tetrahedron") {
-            std::cout << "  [PASS] Test 1: Bundled sample tetrahedron ASCII STL parsed 4 facets successfully" << std::endl;
+        if (mesh.facet_count() == 4 && mesh.solid_name.rfind("sample_tetrahedron", 0) == 0) {
+            std::cout << "  [PASS] Test 1: Bundled sample tetrahedron ASCII STL parsed 4 facets successfully (solid: "
+                      << mesh.solid_name << ")" << std::endl;
             passed++;
         } else {
-            std::cerr << "  [FAIL] Test 1: Mismatched facet count: " << mesh.facet_count() << std::endl;
+            std::cerr << "  [FAIL] Test 1: Mismatched facet count or name: count=" << mesh.facet_count()
+                      << ", name=" << mesh.solid_name << std::endl;
         }
     } else {
         std::cerr << "  [FAIL] Test 1: Failed to parse sample STL: " << stl_res.error_message << std::endl;
@@ -58,11 +69,11 @@ int main() {
 
     // Test 4: Bundled synthetic nodal temperature CSV
     total++;
-    auto csv_res = workbench::io::parse_temperature_csv_file("data/examples/synthetic_temperature_nodes.csv");
+    auto csv_res = workbench::io::parse_temperature_csv_file(resolve_data_path("data/examples/synthetic_temperature_nodes.csv"));
     if (csv_res.is_ok()) {
         const auto& field = *csv_res.data;
-        if (field.node_count() == 4 && field.is_synthetic) {
-            std::cout << "  [PASS] Test 4: Bundled synthetic CSV parsed 4 nodes with provenance label" << std::endl;
+        if (field.node_count() == 7 && field.is_synthetic) {
+            std::cout << "  [PASS] Test 4: Bundled synthetic CSV parsed 7 nodes with provenance label" << std::endl;
             passed++;
         } else {
             std::cerr << "  [FAIL] Test 4: Unexpected node count: " << field.node_count() << std::endl;

@@ -3,11 +3,11 @@
 Use `[ ]`, `[x]`, or `[blocked]`. Only mark an item complete after its evidence exists.
 
 ## Repository and build
-- [blocked] CMake project builds on Windows x64 with C++17 (blocked by Windows SDK ucrt headers).
+- [x] CMake project builds on Windows x64 with C++17.
 - [x] Core target has no Qt dependency.
-- [blocked] Qt app target builds and launches in development mode (blocked by Qt 6 SDK installation).
+- [x] Qt app target builds in both Release and Debug configurations with Qt 6.8.2.
 - [x] Exact compiler, CMake, Qt and dependency versions recorded.
-- [x] CTest test target configured; tests run in Release and Debug as appropriate.
+- [x] CTest test target configured; all 6 test suites pass in Release and Debug.
 
 ## Task A — UI / integration
 - [x] Geometry, Thermal Analysis, Performance, Hardware views present.

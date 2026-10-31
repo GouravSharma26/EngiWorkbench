@@ -12,7 +12,13 @@
       "description": "Visual Studio 2022 generator for 64-bit Release build",
       "generator": "Visual Studio 17 2022",
       "architecture": "x64",
-      "binaryDir": "${sourceDir}/build/windows-msvc-x64-release"
+      "binaryDir": "${sourceDir}/build/windows-msvc-x64-release",
+      "environment": {
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.8.2/msvc2022_64"
+      },
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.8.2/msvc2022_64"
+      }
     },
     {
       "name": "windows-msvc-x64-debug",
@@ -20,7 +26,13 @@
       "description": "Visual Studio 2022 generator for 64-bit Debug build",
       "generator": "Visual Studio 17 2022",
       "architecture": "x64",
-      "binaryDir": "${sourceDir}/build/windows-msvc-x64-debug"
+      "binaryDir": "${sourceDir}/build/windows-msvc-x64-debug",
+      "environment": {
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.8.2/msvc2022_64"
+      },
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.8.2/msvc2022_64"
+      }
     }
   ],
   "buildPresets": [
@@ -54,4 +66,3 @@
     }
   ]
 }
-

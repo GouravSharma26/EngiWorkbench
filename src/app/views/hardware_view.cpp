@@ -92,7 +92,7 @@ void DeviceCardWidget::refresh() {
     
     QString ifaces;
     for (const auto& iface : caps.supported_interfaces) {
-        if (!ifaces.empty()) ifaces += ", ";
+        if (!ifaces.isEmpty()) ifaces += ", ";
         ifaces += QString::fromStdString(iface);
     }
     caps_label_->setText(QString("Vendor: %1 | Logic: %2 (%3V Reference)\nInterfaces: %4")

@@ -93,3 +93,13 @@ add_test(
     NAME workbench_backprop_tests
     COMMAND workbench_backprop_tests
 )
+
+set_tests_properties(
+    workbench_core_tests
+    workbench_thermal_tests
+    workbench_parser_tests
+    workbench_performance_tests
+    workbench_embedded_tests
+    workbench_backprop_tests
+    PROPERTIES WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+)
