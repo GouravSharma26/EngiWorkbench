@@ -1,0 +1,2 @@
+case_count,elements_per_case,serial_vs_parallel_workers,max_absolute_temp_diff_C,threshold_C,agreement_status
+1000,50,Serial vs Parallel (p=4),0.00e+00,1.00e-08,PASS (Verified <= 1e-8 C)

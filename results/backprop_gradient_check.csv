@@ -1,0 +1,5 @@
+parameter,analytical_gradient,numerical_finite_diff,absolute_error,tolerance,status
+w,-1.20946448,-1.20946448,1.13e-10,1e-5,PASS
+b,-1.20946448,-1.20946448,1.13e-10,1e-5,PASS
+v,-0.71068205,-0.71068205,5.25e-11,1e-5,PASS
+c,-1.53788284,-1.53788284,1.12e-10,1e-5,PASS
