@@ -41,3 +41,4 @@ This project (PASS Science Works — Unified Engineering Workbench) incorporates
 - `data/examples/sample_tetrahedron_ascii.stl`: Original ASCII STL geometry generated for this project.
 - `data/examples/synthetic_temperature_nodes.csv`: Synthetic nodal temperature distribution created exclusively for software demonstration and user interface verification.
 - **Declaration:** NOT an actual ANSYS export. No proprietary ANSYS project files, mesh formats, or result databases are included or required.
+

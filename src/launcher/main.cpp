@@ -88,3 +88,4 @@ int WINAPI wWinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, PWSTR 
 
     return static_cast<int>(exitCode);
 }
+

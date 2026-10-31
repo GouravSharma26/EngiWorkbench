@@ -42,3 +42,4 @@ if ($pass) {
 } else {
     Write-Error "Verification failed! Package is incomplete."
 }
+

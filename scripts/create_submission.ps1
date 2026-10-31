@@ -64,3 +64,4 @@ Write-Host "`nSubmission package successfully created!" -ForegroundColor Green
 Write-Host "  Archive:  $ZipOutput"
 Write-Host "  Size:     $($zipItem.Length) bytes ($([Math]::Round($zipItem.Length / 1MB, 2)) MB)"
 Write-Host "  SHA256:   $zipHash"
+

@@ -18,3 +18,4 @@ if (Test-Path $launcherPath) {
 } else {
     Write-Error "Failed to locate built Launch.exe at $launcherPath"
 }
+
