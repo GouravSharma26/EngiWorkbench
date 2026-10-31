@@ -61,3 +61,19 @@ add_test(
     NAME workbench_performance_tests
     COMMAND workbench_performance_tests
 )
+
+add_executable(workbench_embedded_tests
+    test_embedded.cpp
+)
+
+target_link_libraries(workbench_embedded_tests
+    PRIVATE
+        workbench_core
+)
+
+target_compile_features(workbench_embedded_tests PRIVATE cxx_std_17)
+
+add_test(
+    NAME workbench_embedded_tests
+    COMMAND workbench_embedded_tests
+)

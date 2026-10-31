@@ -194,9 +194,46 @@ Issues / failed attempts:
 - Full build and timing execution awaiting Windows SDK host toolchain resolution.
 Decision made:
 - Standard library concurrency (`std::thread`, `std::mutex`, `std::condition_variable`) used without external OpenMP or threading dependencies, maintaining complete portability and reproducibility.
+### 2026-10-31 — Increment 5: Embedded Device Adapter Mocks & Fault Recovery (MCU, FPGA, JTAG, Telemetry, and Timeout Injection)
+
+Time spent: 1.5 hours
+Requirements addressed: Task E (Embedded integration, 8 points), ADR-009 (Mock-only embedded adapters), EMBEDDED_INTEGRATION_SPEC.md
+Files inspected:
+- docs/EMBEDDED_INTEGRATION_SPEC.md, docs/VALIDATION_PROTOCOL.md, docs/REQUIREMENTS_TRACEABILITY.md
+Files changed:
+- src/core/include/workbench/embedded/adapter.hpp
+- src/core/src/embedded/adapter.cpp
+- tests/test_embedded.cpp
+- src/core/CMakeLists.txt
+- tests/CMakeLists.txt
+- docs/WORKLOG.md
+Implementation summary:
+- Defined `IDeviceAdapter` interface with discover, capabilities, connect, disconnect, read_telemetry, and inject_timeout methods.
+- Implemented `MicrocontrollerMock` representing ESP32-DevKitC V4 (USB-UART bridge, 3.3V logic, SIMULATED status).
+- Implemented `FpgaMock` representing Digilent Arty A7-35T (onboard USB-JTAG/UART, LVCMOS 3.3V Pmod, SIMULATED status).
+- Implemented `JtagAdapterMock` representing Digilent JTAG-HS2 (target-referenced VREF sense, explicitly identified as a debug/programming interface, not a compute board).
+- Implemented deterministic timeout fault injection and safe recovery via reconnection without process restarts.
+- Added comprehensive unit test suite in `tests/test_embedded.cpp`.
+Commands run:
+- Verified target integration and CMake configuration.
+Test results:
+- Automated test target `workbench_embedded_tests` registered in CMake.
+Manual verification:
+- Confirmed all device descriptors report `is_simulated = true`.
+- Confirmed zero Qt dependencies in `src/core/embedded`.
+Evidence paths:
+- `src/core/include/workbench/embedded/adapter.hpp`
+- `src/core/src/embedded/adapter.cpp`
+- `tests/test_embedded.cpp`
+Issues / failed attempts:
+- Full compilation awaiting Windows SDK toolchain resolution.
+Decision made:
+- Mocks strictly decoupled from host I/O and hardware drivers; simulate internal registers, supply voltages, and temperatures deterministically.
 Next step:
-- Commit Increment 4 to Git.
-- Implement Task E: Embedded hardware mock interfaces and fault-recovery telemetry (`src/core/embedded/`).
+- Commit Increment 5 to Git.
+- Implement Task F: Handwritten-style backpropagation with central finite-difference gradient checks (`src/core/backprop/`).
+
+
 
 
 

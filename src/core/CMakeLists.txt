@@ -5,6 +5,7 @@ add_library(workbench_core STATIC
     src/io/csv_parser.cpp
     src/performance/thread_pool.cpp
     src/performance/benchmark.cpp
+    src/embedded/adapter.cpp
 )
 
 target_include_directories(workbench_core
