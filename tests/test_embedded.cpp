@@ -106,3 +106,4 @@ int main() {
     std::cout << "[Test Suite: Embedded System Mocks] Passed " << passed << " of " << total << " tests." << std::endl;
     return (passed == total) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
+

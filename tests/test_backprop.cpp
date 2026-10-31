@@ -109,3 +109,4 @@ int main() {
     std::cout << "[Test Suite: Handwritten-style Backpropagation] Passed " << passed << " of " << total << " tests." << std::endl;
     return (passed == total) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
+

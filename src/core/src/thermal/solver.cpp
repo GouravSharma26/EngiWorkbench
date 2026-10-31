@@ -193,3 +193,4 @@ std::string format_convergence_csv(const std::vector<domain::ConvergenceRecord>&
 
 } // namespace thermal
 } // namespace workbench
+

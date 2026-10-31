@@ -158,3 +158,4 @@ std::string format_gradient_check_csv(const GradientCheckResult& check) {
 
 } // namespace backprop
 } // namespace workbench
+

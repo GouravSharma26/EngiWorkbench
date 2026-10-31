@@ -118,3 +118,4 @@ int main() {
     std::cout << "[Test Suite: Thermal FEA 1D] Passed " << passed << " of " << total << " tests." << std::endl;
     return (passed == total) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
+

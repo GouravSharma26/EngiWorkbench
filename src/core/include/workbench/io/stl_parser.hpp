@@ -28,3 +28,4 @@ ParseResult<domain::MeshData> parse_ascii_stl_string(
 
 } // namespace io
 } // namespace workbench
+

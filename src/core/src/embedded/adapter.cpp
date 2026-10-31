@@ -166,3 +166,4 @@ std::unique_ptr<IDeviceAdapter> create_jtag_adapter_mock() {
 
 } // namespace embedded
 } // namespace workbench
+
