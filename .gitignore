@@ -1,0 +1,40 @@
+# Build and generated output
+/build/
+/build-*/
+/out/
+/dist/
+/CMakeFiles/
+/CMakeCache.txt
+/Testing/
+*.obj
+*.o
+*.pch
+*.pdb
+*.ilk
+*.exe
+*.dll
+*.lib
+*.exp
+*.idb
+*.ipch
+
+# IDE / local settings
+.vs/
+.idea/
+.vscode/.cmake/
+.vscode/settings.local.json
+*.user
+*.suo
+
+# Logs and temporary exports
+*.log
+*.tmp
+*.bak
+*.autosave
+
+# Secrets / local env
+.env
+.env.*
+!.env.example
+
+# Keep the documentation pack examples and result placeholders tracked.

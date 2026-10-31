@@ -1,0 +1,35 @@
+{
+  "provenance": "Self-created sample data generated for this project documentation pack; not extracted from a customer, laboratory, CAD, or ANSYS project.",
+  "geometry": {
+    "file": "sample_tetrahedron_ascii.stl",
+    "format": "ASCII STL",
+    "origin": "Self-created tetrahedron",
+    "units_convention": "Metres by convention for this example only. STL file syntax does not encode a universal unit.",
+    "dimensions_m": {
+      "x": 0.02,
+      "y": 0.02,
+      "z": 0.02
+    },
+    "triangles": 4,
+    "license": "Original synthetic example created for this assignment; no third-party geometry used."
+  },
+  "temperature_data": {
+    "file": "synthetic_temperature_nodes.csv",
+    "format": "CSV",
+    "label": "SYNTHETIC — NOT AN ACTUAL ANSYS EXPORT",
+    "schema": [
+      "node_id",
+      "x_m",
+      "y_m",
+      "z_m",
+      "temperature_C"
+    ],
+    "units": {
+      "coordinates": "m",
+      "temperature": "°C"
+    },
+    "records": 7,
+    "license": "Original synthetic data created for this assignment; not sourced from ANSYS or a physical experiment."
+  },
+  "registration": "The CSV point cloud is an independent example; mesh-to-result registration is not asserted or required."
+}
